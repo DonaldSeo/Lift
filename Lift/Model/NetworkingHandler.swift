@@ -13,10 +13,11 @@ class Networking {
   static let sharedInstance = Networking()
   
   let exerciseCategoryURL = "https://wger.de/api/v2/exercisecategory"
+  let exerciseListFromCategoryURL = "https://wger.de/api/v2/exercise/?status=2&language=2&category="
   
   
   
-  func getExerciseCategory(completion: @escaping ([ExerciseCategory]) -> ()) {
+  func getCategory(completion: @escaping ([ExerciseCategory]) -> ()) {
     guard let url = URL(string: exerciseCategoryURL) else {
       fatalError()
     }
@@ -31,6 +32,24 @@ class Networking {
         return
       }
       completion(category)
+    }.resume()
+  }
+  
+  func getExerciseFromCategory(categoryId: Int, completion: @escaping ([Exercise]) -> ()) {
+    guard let url = URL(string: exerciseListFromCategoryURL+"\(categoryId)") else {
+      fatalError()
+    }
+    URLSession.shared.dataTask(with: url) { data, response, taskError in
+      guard let httpResponse = response as? HTTPURLResponse,
+        (200..<300).contains(httpResponse.statusCode),
+        let data = data else {
+          return
+      }
+      let decoder = JSONDecoder()
+      guard let exerciseList = try? decoder.decode([Exercise].self, from: data) else {
+        return
+      }
+      completion(exerciseList)
     }.resume()
   }
 }

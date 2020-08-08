@@ -26,6 +26,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YUp-vI-AAu" kind="showDetail" identifier="GoToExerciseList" id="azm-uL-hmg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -84,6 +87,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mW-39-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-620.28985507246387" y="118.52678571428571"/>
+        </scene>
+        <!--Exercise ListVC-->
+        <scene sceneID="qHF-YE-3Ca">
+            <objects>
+                <viewController id="YUp-vI-AAu" customClass="ExerciseListVC" customModule="Lift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DxI-sP-8T7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XPa-ud-b6M">
+                                <rect key="frame" x="0.0" y="91" width="414" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseCell" id="eVd-ZG-nzN">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eVd-ZG-nzN" id="88V-YV-dkM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ExerciseCategory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGl-Yc-O9E">
+                                <rect key="frame" x="140" y="50" width="134.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XPa-ud-b6M" firstAttribute="leading" secondItem="32t-jD-PBi" secondAttribute="leading" id="72c-yf-NDD"/>
+                            <constraint firstItem="MGl-Yc-O9E" firstAttribute="centerX" secondItem="DxI-sP-8T7" secondAttribute="centerX" id="MEc-gb-GKp"/>
+                            <constraint firstItem="32t-jD-PBi" firstAttribute="bottom" secondItem="XPa-ud-b6M" secondAttribute="bottom" id="RiY-5p-ptM"/>
+                            <constraint firstItem="MGl-Yc-O9E" firstAttribute="top" secondItem="32t-jD-PBi" secondAttribute="top" constant="50" id="YZS-BU-F3D"/>
+                            <constraint firstItem="32t-jD-PBi" firstAttribute="trailing" secondItem="XPa-ud-b6M" secondAttribute="trailing" id="acg-68-s68"/>
+                            <constraint firstItem="XPa-ud-b6M" firstAttribute="top" secondItem="MGl-Yc-O9E" secondAttribute="bottom" constant="20" id="cgL-cA-rMs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="32t-jD-PBi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tUU-G9-3bE"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="MGl-Yc-O9E" id="BMz-zs-LGV"/>
+                        <outlet property="exerciseTableView" destination="XPa-ud-b6M" id="Re8-Q6-LB6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bpx-z0-Nmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889.85507246376824" y="118.52678571428571"/>
         </scene>
     </scenes>
 </document>

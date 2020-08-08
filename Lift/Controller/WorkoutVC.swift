@@ -8,13 +8,18 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class WorkoutVC: UIViewController {
   
+
   var userWorkoutSession: [Exercise] = []
+  let userWorkoutReference = Database.database().reference(withPath: "user-workout")
 //  var userWorkoutPlan: [[Exercise]] = [[]]
   override func viewDidLoad() {
     
+//    let rootRef = Database.database().reference()
+//    let userWorkoutRef = Database.database().reference(withPath: "user-workout")
   }
 }
 
