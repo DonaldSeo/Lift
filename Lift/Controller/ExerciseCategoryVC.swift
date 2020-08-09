@@ -12,12 +12,16 @@ class ExerciseCategoryVC: UIViewController {
 
   @IBOutlet weak var tableview: UITableView!
   
+  
   var category: [ExerciseCategory] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
     tableview.dataSource = self
     tableview.delegate = self
+    
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+    
     // Do any additional setup after loading the view.
     getExerciseCategory()
   }
@@ -70,6 +74,8 @@ extension ExerciseCategoryVC: UITableViewDelegate, UITableViewDataSource {
     // segue to exercise list view
     performSegue(withIdentifier: "GoToExerciseList", sender: self)
   }
+  
+
   
   
 }

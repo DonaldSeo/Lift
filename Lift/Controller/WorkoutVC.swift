@@ -91,6 +91,15 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     return cell
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      let workoutItem = userWorkoutSession[indexPath.row]
+      userWorkoutReference.child(currentUser.uid).child("List").child(workoutItem.key).setValue(nil)
+      userWorkoutSession.remove(at: indexPath.row)
+      workoutTableView.reloadData()
+    }
+  }
+  
   
   
 }
