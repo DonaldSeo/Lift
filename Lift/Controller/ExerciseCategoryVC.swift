@@ -32,12 +32,12 @@ class ExerciseCategoryVC: UIViewController {
 //    }
 //  }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      let destinationVC = segue.destination as! ExerciseListVC
-      
-      if let indexPath = tableview.indexPathForSelectedRow {
-        destinationVC.selectedCategoryId = category[indexPath.row].id
-        destinationVC.selectedCategoryName = category[indexPath.row].name
-      }
+    let destinationVC = segue.destination as! ExerciseListVC
+    
+    if let indexPath = tableview.indexPathForSelectedRow {
+      destinationVC.selectedCategoryId = category[indexPath.row].id
+      destinationVC.selectedCategoryName = category[indexPath.row].name
+    }
   }
   
   func getExerciseCategory() {

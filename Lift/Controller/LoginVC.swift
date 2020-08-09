@@ -17,6 +17,7 @@ class LoginVC: UIViewController {
   let loginToList = "LoginToList"
   let ref = Database.database().reference(withPath: "User")
   
+  
   @IBOutlet weak var LoginViewLogo: UIImageView!
   
   @IBOutlet weak var textFieldLoginEmail: UITextField!
@@ -25,18 +26,30 @@ class LoginVC: UIViewController {
   override func viewDidLoad() {
     //set logo image
     
-    let listener = Auth.auth().addStateDidChangeListener { auth, user in
+    Auth.auth().addStateDidChangeListener { auth, user in
       if user != nil {
+        print("hello")
+        print(user?.uid)
         self.performSegue(withIdentifier: self.loginToList, sender: nil)
+      } else {
+        print("login failed")
       }
     }
-    Auth.auth().removeStateDidChangeListener(listener)
+//    Auth.auth().removeStateDidChangeListener(listener)
     
   }
   
   @IBAction func loginButtonPressed(_ sender: Any) {
-    Auth.auth().signIn(withEmail: textFieldLoginPassword.text!, password: textFieldLoginPassword.text!)
-    performSegue(withIdentifier: loginToList, sender: nil)
+    Auth.auth().signIn(withEmail: textFieldLoginEmail.text!, password: textFieldLoginPassword.text!) { (result, error) in
+      if let error = error, let _ = AuthErrorCode(rawValue: error._code) {
+        print("login not working")
+        print(error.localizedDescription)
+      } else {
+        print("login successful")
+        print(result as Any)
+      }
+    }
+//    performSegue(withIdentifier: loginToList, sender: nil)
   }
   
   

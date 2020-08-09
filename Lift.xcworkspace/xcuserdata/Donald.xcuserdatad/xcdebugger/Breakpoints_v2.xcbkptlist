@@ -20,5 +20,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "280C082D-FEE1-4F07-98EF-A2F2D2068604"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lift/Controller/WorkoutVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D479958-E4C0-428C-8C1A-8A92F9E52A2D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lift/Controller/WorkoutVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "WorkoutVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "9D479958-E4C0-428C-8C1A-8A92F9E52A2D - af87024c3c0bb99f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lift.WorkoutVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "Lift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/target/Desktop/Lift/Lift/Controller/WorkoutVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "141">
+               </Location>
+               <Location
+                  uuid = "9D479958-E4C0-428C-8C1A-8A92F9E52A2D - 92edd5dbb53bd248"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRAuth, Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in Lift.WorkoutVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "Lift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/target/Desktop/Lift/Lift/Controller/WorkoutVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "118">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

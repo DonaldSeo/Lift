@@ -14,32 +14,67 @@ class WorkoutVC: UIViewController {
   
   @IBOutlet weak var workoutTableView: UITableView!
   
-  var user: User!
+  var currentUser: User!
   var userWorkoutSession: [UserWorkoutItem] = []
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
+  var handle: AuthStateDidChangeListenerHandle?
 //  var userWorkoutPlan: [[Exercise]] = [[]]
+  
+//  override func viewWillAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//    handle = Auth.auth().addStateDidChangeListener({ auth, user in
+//      self.currentUser = User(uid: user!.uid, email: user!.email!)
+//    })
+//  }
   override func viewDidLoad() {
     
     self.workoutTableView.dataSource = self
     self.workoutTableView.delegate = self
     getCurrentUser()
-    userWorkoutReference.child(user.uid).child("List").observe(.value, with: { snapshot in
-      var newWorkout: [UserWorkoutItem] = []
-      for item in snapshot.children {
-        let exercise = UserWorkoutItem(snapshot: item as! DataSnapshot)
-        newWorkout.append(exercise)
+    
+    Auth.auth().addStateDidChangeListener { _, user in
+      if let user = user {
+        self.userWorkoutReference.child(user.uid).child("List").observe(.value) { snapshot in
+          var newWorkout: [UserWorkoutItem] = []
+          for item in snapshot.children {
+            let exercise = UserWorkoutItem(snapshot: item as! DataSnapshot)
+            newWorkout.append(exercise)
+          }
+          self.userWorkoutSession = newWorkout
+          //      print(self.userWorkoutSession[0].name)
+          self.workoutTableView.reloadData()
+        }
+      } else {
+        //not signed in
+        print("not signed in")
       }
-      self.userWorkoutSession = newWorkout
-      print(self.userWorkoutSession[0].name)
-      self.workoutTableView.reloadData()
-    })
+    }
+//    print("current user is \(user.email) with UID \(user.uid)")
+//    userWorkoutReference.child(currentUser.uid).child("List").observe(.value, with: { snapshot in
+//      var newWorkout: [UserWorkoutItem] = []
+//      for item in snapshot.children {
+//        let exercise = UserWorkoutItem(snapshot: item as! DataSnapshot)
+//        newWorkout.append(exercise)
+//      }
+//      self.userWorkoutSession = newWorkout
+////      print(self.userWorkoutSession[0].name)
+//      self.workoutTableView.reloadData()
+//    })
   }
   
+  @IBAction func signOutButtonPressed(_ sender: Any) {
+    do {
+      try Auth.auth().signOut()
+    } catch let error as NSError {
+      print(error.localizedDescription)
+    }
+    dismiss(animated: true, completion: nil)
+  }
   
   func getCurrentUser() {
     
     if let authData = Auth.auth().currentUser {
-      user = User(uid: authData.uid, email: authData.email!)
+      currentUser = User(uid: authData.uid, email: authData.email!)
     }
   }
 }

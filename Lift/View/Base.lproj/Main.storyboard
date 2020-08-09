@@ -88,7 +88,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="gpK-bw-IVd" eventType="touchUpInside" id="c0D-fw-IAu"/>
-                                    <segue destination="lQ1-Qq-z5Y" kind="presentation" identifier="LoginToList" modalPresentationStyle="fullScreen" id="JhS-XB-C0h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEt-Al-IX4">
@@ -127,6 +126,7 @@
                         <outlet property="LoginViewLogo" destination="3Il-Qj-KU1" id="Dl7-Kt-IXk"/>
                         <outlet property="textFieldLoginEmail" destination="dvB-7j-hdb" id="y8l-TY-5Xp"/>
                         <outlet property="textFieldLoginPassword" destination="IsG-C2-zST" id="H3t-XA-sgT"/>
+                        <segue destination="lQ1-Qq-z5Y" kind="presentation" identifier="LoginToList" modalPresentationStyle="fullScreen" id="oFW-15-ibX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f26-pD-0ZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -174,7 +174,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mr-Yk-Q0E"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Workout" id="NAs-ra-3zi"/>
+                    <navigationItem key="navigationItem" title="Workout" id="NAs-ra-3zi">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="zLk-PS-cf6">
+                            <connections>
+                                <action selector="signOutButtonPressed:" destination="gKN-J5-PYT" id="qJk-66-kGg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="workoutTableView" destination="qog-Cf-qSg" id="eQU-mw-Wxb"/>
                     </connections>
@@ -240,6 +246,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lQ1-Qq-z5Y" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lbx-Yd-3hC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aIc-MH-l6v">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
