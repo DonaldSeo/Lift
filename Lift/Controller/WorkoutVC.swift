@@ -100,6 +100,10 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     }
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "GoToExerciseDetail", sender: self)
+  }
+  
   
   
 }

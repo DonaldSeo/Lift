@@ -78,12 +78,14 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - ScrollableGraphView (4.0.6)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - ScrollableGraphView
 
 SPEC REPOS:
   trunk:
@@ -101,6 +103,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - ScrollableGraphView
 
 SPEC CHECKSUMS:
   Firebase: 57957c8d6eb3d8b80a560b1dc58be24724b89ff2
@@ -117,7 +120,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
 
-PODFILE CHECKSUM: 1702e56eb24d0cb5cf4cb108daec4877bf1791c5
+PODFILE CHECKSUM: 9fd4c2bad717460c1b1674c885eeb4e282a173ae
 
 COCOAPODS: 1.9.3

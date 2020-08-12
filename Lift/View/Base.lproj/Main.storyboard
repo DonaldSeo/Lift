@@ -59,6 +59,32 @@
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="118.52678571428571"/>
         </scene>
+        <!--Exercise DetailVC-->
+        <scene sceneID="axl-L7-h3U">
+            <objects>
+                <viewController id="t09-w7-p21" customClass="ExerciseDetailVC" customModule="Lift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JaS-Bv-fgh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8w7-UK-Ka6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="443"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="X9r-Fc-xYe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fbN-oQ-syv"/>
+                    <connections>
+                        <outlet property="graphRenderView" destination="8w7-UK-Ka6" id="sqB-ac-ukr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38b-ss-Q9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950.7246376811595" y="844.41964285714278"/>
+        </scene>
         <!--LoginVC-->
         <scene sceneID="gNT-mP-AP1">
             <objects>
@@ -182,11 +208,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="workoutTableView" destination="qog-Cf-qSg" id="eQU-mw-Wxb"/>
+                        <segue destination="t09-w7-p21" kind="show" identifier="GoToExerciseDetail" id="SV5-Jb-Q4G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mW-39-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1064" y="430"/>
         </scene>
         <!--Exercise ListVC-->
         <scene sceneID="qHF-YE-3Ca">

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3DF5E4D2D4A1FA5408EBFF7D /* libPods-Lift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDC7F202ED978D498FAA6A9 /* libPods-Lift.a */; };
+		4066D61824E37F2700B94A91 /* ExerciseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */; };
 		40937AC924DCF65A00870F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AC824DCF65A00870F66 /* AppDelegate.swift */; };
 		40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACA24DCF65A00870F66 /* SceneDelegate.swift */; };
 		40937ACD24DCF65A00870F66 /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACC24DCF65A00870F66 /* ExerciseCategoryVC.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		1E03E7865F2F63340361AB79 /* Pods-Lift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lift.debug.xcconfig"; path = "Target Support Files/Pods-Lift/Pods-Lift.debug.xcconfig"; sourceTree = "<group>"; };
 		2EDC7F202ED978D498FAA6A9 /* libPods-Lift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailVC.swift; sourceTree = "<group>"; };
 		40937AC524DCF65A00870F66 /* Lift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40937AC824DCF65A00870F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40937ACA24DCF65A00870F66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				40937AE424DDF6C800870F66 /* WorkoutVC.swift */,
 				40937ACC24DCF65A00870F66 /* ExerciseCategoryVC.swift */,
 				40937AEB24DE4B4D00870F66 /* ExerciseListVC.swift */,
+				4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				40937AE524DDF6C800870F66 /* WorkoutVC.swift in Sources */,
 				40937AF524DF5E4E00870F66 /* User.swift in Sources */,
 				40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */,
+				4066D61824E37F2700B94A91 /* ExerciseDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
