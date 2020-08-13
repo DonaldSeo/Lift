@@ -64,7 +64,7 @@
             <objects>
                 <viewController id="t09-w7-p21" customClass="ExerciseDetailVC" customModule="Lift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JaS-Bv-fgh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8w7-UK-Ka6">
@@ -208,7 +208,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="workoutTableView" destination="qog-Cf-qSg" id="eQU-mw-Wxb"/>
-                        <segue destination="t09-w7-p21" kind="show" identifier="GoToExerciseDetail" id="SV5-Jb-Q4G"/>
+                        <segue destination="t09-w7-p21" kind="presentation" identifier="GoToExerciseDetail" id="SV5-Jb-Q4G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mW-39-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

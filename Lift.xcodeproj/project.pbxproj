@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3DF5E4D2D4A1FA5408EBFF7D /* libPods-Lift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDC7F202ED978D498FAA6A9 /* libPods-Lift.a */; };
 		4066D61824E37F2700B94A91 /* ExerciseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */; };
+		4066D61B24E4C00C00B94A91 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4066D61A24E4C00C00B94A91 /* PopAnimator.swift */; };
+		4066D61F24E4CBA600B94A91 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4066D61D24E4CBA600B94A91 /* WorkoutCell.swift */; };
+		4066D62024E4CBA600B94A91 /* WorkoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4066D61E24E4CBA600B94A91 /* WorkoutCell.xib */; };
 		40937AC924DCF65A00870F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AC824DCF65A00870F66 /* AppDelegate.swift */; };
 		40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACA24DCF65A00870F66 /* SceneDelegate.swift */; };
 		40937ACD24DCF65A00870F66 /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACC24DCF65A00870F66 /* ExerciseCategoryVC.swift */; };
@@ -29,6 +32,9 @@
 		1E03E7865F2F63340361AB79 /* Pods-Lift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lift.debug.xcconfig"; path = "Target Support Files/Pods-Lift/Pods-Lift.debug.xcconfig"; sourceTree = "<group>"; };
 		2EDC7F202ED978D498FAA6A9 /* libPods-Lift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailVC.swift; sourceTree = "<group>"; };
+		4066D61A24E4C00C00B94A91 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		4066D61D24E4CBA600B94A91 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
+		4066D61E24E4CBA600B94A91 /* WorkoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCell.xib; sourceTree = "<group>"; };
 		40937AC524DCF65A00870F66 /* Lift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40937AC824DCF65A00870F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40937ACA24DCF65A00870F66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +75,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4066D61924E4BFD000B94A91 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4066D61A24E4C00C00B94A91 /* PopAnimator.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		4066D61C24E4CB6200B94A91 /* WorkoutCell */ = {
+			isa = PBXGroup;
+			children = (
+				4066D61D24E4CBA600B94A91 /* WorkoutCell.swift */,
+				4066D61E24E4CBA600B94A91 /* WorkoutCell.xib */,
+			);
+			path = WorkoutCell;
+			sourceTree = "<group>";
+		};
 		40937ABC24DCF65A00870F66 = {
 			isa = PBXGroup;
 			children = (
@@ -90,9 +113,11 @@
 		40937AC724DCF65A00870F66 /* Lift */ = {
 			isa = PBXGroup;
 			children = (
+				4066D61C24E4CB6200B94A91 /* WorkoutCell */,
 				40937AF624DF60AE00870F66 /* Lift.entitlements */,
 				40937AD624DCF65C00870F66 /* Info.plist */,
 				40937AE624DE40AA00870F66 /* Supporting Files */,
+				4066D61924E4BFD000B94A91 /* Animation */,
 				40937AE324DDE8A700870F66 /* View */,
 				40937AE124DDE87800870F66 /* Controller */,
 				40937AE024DDE86C00870F66 /* Model */,
@@ -222,6 +247,7 @@
 				40937AD524DCF65C00870F66 /* LaunchScreen.storyboard in Resources */,
 				40937AE824DE40EA00870F66 /* GoogleService-Info.plist in Resources */,
 				40937AD224DCF65C00870F66 /* Assets.xcassets in Resources */,
+				4066D62024E4CBA600B94A91 /* WorkoutCell.xib in Resources */,
 				40937AD024DCF65A00870F66 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40937ADF24DDD68E00870F66 /* Exercise.swift in Sources */,
+				4066D61F24E4CBA600B94A91 /* WorkoutCell.swift in Sources */,
 				40937ADD24DDD63E00870F66 /* NetworkingHandler.swift in Sources */,
 				40937ACD24DCF65A00870F66 /* ExerciseCategoryVC.swift in Sources */,
 				40937AEA24DE45CC00870F66 /* UserWorkoutItem.swift in Sources */,
@@ -268,6 +295,7 @@
 				40937AE524DDF6C800870F66 /* WorkoutVC.swift in Sources */,
 				40937AF524DF5E4E00870F66 /* User.swift in Sources */,
 				40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */,
+				4066D61B24E4C00C00B94A91 /* PopAnimator.swift in Sources */,
 				4066D61824E37F2700B94A91 /* ExerciseDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

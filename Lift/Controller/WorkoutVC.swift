@@ -14,6 +14,8 @@ class WorkoutVC: UIViewController {
   
   @IBOutlet weak var workoutTableView: UITableView!
   
+  let transition = PopAnimator()
+  
   var currentUser: User!
   var userWorkoutSession: [UserWorkoutItem] = []
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
@@ -78,7 +80,56 @@ class WorkoutVC: UIViewController {
     }
   }
 }
+// MARK: - viewcontroller transition animation delegate
+extension WorkoutVC: UIViewControllerTransitioningDelegate {
+  
+  func animationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController, source: UIViewController)
+      -> UIViewControllerAnimatedTransitioning? {
+        guard
+      let selectedIndexPathCell = workoutTableView.indexPathForSelectedRow,
+      let selectedCell = workoutTableView.cellForRow(at: selectedIndexPathCell),
+      let selectedCellSuperview = selectedCell.superview
+      else {
+        return nil
+    }
+    
+    transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
+    transition.originFrame = CGRect(
+      x: transition.originFrame.origin.x + 20,
+      y: transition.originFrame.origin.y + 20,
+      width: transition.originFrame.size.width - 40,
+      height: transition.originFrame.size.height - 40
+    )
+    
+    transition.presenting = true
+//    selectedCell.shadowView.isHidden = true
+    
+    return transition
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController)
+      -> UIViewControllerAnimatedTransitioning? {
+    transition.presenting = false
+    return transition
+  }
 
+
+  
+}
+
+// MARK: - prepare segue
+
+extension WorkoutVC {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let destinationVC = segue.destination as! ExerciseDetailVC
+    destinationVC.transitioningDelegate = self
+  }
+}
+
+
+// MARK: - Tableview Extension
 extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
