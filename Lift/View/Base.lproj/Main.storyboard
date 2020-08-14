@@ -67,17 +67,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8w7-UK-Ka6">
-                                <rect key="frame" x="0.0" y="88" width="414" height="443"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w7-UK-Ka6">
+                                <rect key="frame" x="0.0" y="454" width="414" height="326"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-M7-bUH">
+                                <rect key="frame" x="186" y="50" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bIw-bi-ztJ">
+                                <rect key="frame" x="0.0" y="129" width="414" height="247"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="247" id="PLt-vL-lID"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-Dc-dgX">
+                                <rect key="frame" x="185" y="400" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-ng-V1Q">
+                                <rect key="frame" x="374.5" y="20" width="19.5" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="YRY-6g-VuL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" image="clear.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BH9-M7-bUH" firstAttribute="top" secondItem="X9r-Fc-xYe" secondAttribute="top" constant="50" id="0iR-kw-2Gu"/>
+                            <constraint firstItem="Wen-Dc-dgX" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="10s-c7-caJ"/>
+                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="top" secondItem="Wen-Dc-dgX" secondAttribute="bottom" constant="33" id="4DE-IY-Tc4"/>
+                            <constraint firstItem="bIw-bi-ztJ" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="9gK-GW-VMD"/>
+                            <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="bIw-bi-ztJ" secondAttribute="trailing" id="QjW-4C-wAB"/>
+                            <constraint firstItem="bIw-bi-ztJ" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="Qs1-Od-9J5"/>
+                            <constraint firstItem="mjO-ng-V1Q" firstAttribute="top" secondItem="X9r-Fc-xYe" secondAttribute="top" constant="20" id="YCB-i9-eEd"/>
+                            <constraint firstItem="Wen-Dc-dgX" firstAttribute="top" secondItem="bIw-bi-ztJ" secondAttribute="bottom" constant="24" id="gO4-Ni-ItO"/>
+                            <constraint firstItem="X9r-Fc-xYe" firstAttribute="bottom" secondItem="8w7-UK-Ka6" secondAttribute="bottom" constant="28" id="kZm-WX-78P"/>
+                            <constraint firstItem="mjO-ng-V1Q" firstAttribute="trailing" secondItem="JaS-Bv-fgh" secondAttribute="trailingMargin" id="n0H-Ev-XS0"/>
+                            <constraint firstItem="BH9-M7-bUH" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="teK-LB-6tf"/>
+                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="veh-lR-4sA"/>
+                            <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="BH9-M7-bUH" secondAttribute="bottom" constant="58.5" id="vma-Kq-wcJ"/>
+                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="trailing" secondItem="X9r-Fc-xYe" secondAttribute="trailing" id="vnR-bW-V3Z"/>
+                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="zud-YA-i3y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="X9r-Fc-xYe"/>
                     </view>
                     <navigationItem key="navigationItem" id="fbN-oQ-syv"/>
                     <connections>
+                        <outlet property="exerciseTitle" destination="BH9-M7-bUH" id="tYP-4R-Aoe"/>
                         <outlet property="graphRenderView" destination="8w7-UK-Ka6" id="sqB-ac-ukr"/>
                     </connections>
                 </viewController>
@@ -133,15 +177,11 @@
                             <constraint firstItem="NEt-Al-IX4" firstAttribute="centerX" secondItem="ffl-9F-A7K" secondAttribute="centerX" id="Pmz-NX-MpW"/>
                             <constraint firstItem="dvB-7j-hdb" firstAttribute="leading" secondItem="JZt-ca-TYX" secondAttribute="leading" constant="30" id="TJg-Hi-FKP"/>
                             <constraint firstItem="JZt-ca-TYX" firstAttribute="trailing" secondItem="dvB-7j-hdb" secondAttribute="trailing" constant="30" id="VDN-Am-UBB"/>
-                            <constraint firstItem="f28-Me-N4O" firstAttribute="leading" secondItem="JZt-ca-TYX" secondAttribute="leading" constant="188" id="X7B-6E-5du"/>
-                            <constraint firstItem="JZt-ca-TYX" firstAttribute="trailing" secondItem="NEt-Al-IX4" secondAttribute="trailing" constant="181" id="c4Z-kr-24Y"/>
-                            <constraint firstItem="JZt-ca-TYX" firstAttribute="trailing" secondItem="f28-Me-N4O" secondAttribute="trailing" constant="188" id="eei-vd-KSS"/>
                             <constraint firstItem="JZt-ca-TYX" firstAttribute="trailing" secondItem="IsG-C2-zST" secondAttribute="trailing" constant="30" id="iZ5-Sc-CdH"/>
                             <constraint firstItem="JZt-ca-TYX" firstAttribute="trailing" secondItem="3Il-Qj-KU1" secondAttribute="trailing" constant="30" id="mEY-em-eK9"/>
                             <constraint firstItem="f28-Me-N4O" firstAttribute="top" secondItem="IsG-C2-zST" secondAttribute="bottom" constant="61" id="mV0-9r-uRJ"/>
                             <constraint firstItem="3Il-Qj-KU1" firstAttribute="leading" secondItem="JZt-ca-TYX" secondAttribute="leading" constant="30" id="ror-wW-1uy"/>
                             <constraint firstItem="f28-Me-N4O" firstAttribute="centerX" secondItem="ffl-9F-A7K" secondAttribute="centerX" id="uQf-le-TCC"/>
-                            <constraint firstItem="NEt-Al-IX4" firstAttribute="leading" secondItem="JZt-ca-TYX" secondAttribute="leading" constant="181" id="xD8-gg-4Eg"/>
                             <constraint firstItem="3Il-Qj-KU1" firstAttribute="top" secondItem="JZt-ca-TYX" secondAttribute="top" constant="30" id="xU3-Ac-YcF"/>
                             <constraint firstItem="NEt-Al-IX4" firstAttribute="top" secondItem="f28-Me-N4O" secondAttribute="bottom" constant="15" id="zXh-CG-0CE"/>
                         </constraints>
@@ -170,7 +210,7 @@
                                 <rect key="frame" x="152.5" y="138" width="109" height="30"/>
                                 <state key="normal" title="Add an exercise"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="7mr-xf-JW8"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="GoToWorkoutCategory" id="7mr-xf-JW8"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qog-Cf-qSg">
@@ -287,4 +327,7 @@
             <point key="canvasLocation" x="289.85507246376812" y="118.52678571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

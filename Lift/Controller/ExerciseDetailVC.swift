@@ -13,8 +13,15 @@ import ScrollableGraphView
 class ExerciseDetailVC: UIViewController {
   
   
+
+  @IBOutlet weak var exerciseTitle: UILabel!
   @IBOutlet weak var graphRenderView: UIView!
+  
+  
   let barPlotData = [20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0]
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     

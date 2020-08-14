@@ -123,8 +123,17 @@ extension WorkoutVC: UIViewControllerTransitioningDelegate {
 
 extension WorkoutVC {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let destinationVC = segue.destination as! ExerciseDetailVC
-    destinationVC.transitioningDelegate = self
+    switch segue.identifier {
+    case "GoToExerciseDetail":
+      let destinationVC = segue.destination as! ExerciseDetailVC
+      destinationVC.transitioningDelegate = self
+    case "GoToWorkoutCategory":
+      let destinationVC = segue.destination as! ExerciseCategoryVC
+      
+    default:
+      return
+    }
+    
   }
 }
 
