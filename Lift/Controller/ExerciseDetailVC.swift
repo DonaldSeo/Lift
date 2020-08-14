@@ -18,12 +18,19 @@ class ExerciseDetailVC: UIViewController {
   @IBOutlet weak var graphRenderView: UIView!
   
   
+  @IBOutlet weak var setTableView: UITableView!
+  var totalSetCounter = 1
   let barPlotData = [20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0]
   
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setTableView.dataSource = self
+    setTableView.delegate = self
+    
+    let exerciseLogCell = UINib(nibName: "ExerciseLogCell", bundle: nil)
+    setTableView.register(exerciseLogCell, forCellReuseIdentifier: "ExerciseLogCell")
     
     animateGraph()
   }
@@ -68,6 +75,7 @@ class ExerciseDetailVC: UIViewController {
   }
 }
 
+// MARK: - scrollable graph datasource
 extension ExerciseDetailVC: ScrollableGraphViewDataSource {
   func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
     // Return the data for each plot.
@@ -85,6 +93,19 @@ extension ExerciseDetailVC: ScrollableGraphViewDataSource {
   
   func numberOfPoints() -> Int {
     return barPlotData.count
+  }
+}
+
+extension ExerciseDetailVC: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    totalSetCounter
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseLogCell") as? ExerciseLogCell else {
+      fatalError()
+    }
+    return cell
   }
   
   

@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="exerciseTitle" destination="BH9-M7-bUH" id="tYP-4R-Aoe"/>
                         <outlet property="graphRenderView" destination="8w7-UK-Ka6" id="sqB-ac-ukr"/>
+                        <outlet property="setTableView" destination="bIw-bi-ztJ" id="FJN-Rr-IMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38b-ss-Q9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
