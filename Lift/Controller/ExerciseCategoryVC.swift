@@ -73,6 +73,7 @@ extension ExerciseCategoryVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     // segue to exercise list view
     performSegue(withIdentifier: "GoToExerciseList", sender: self)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
 

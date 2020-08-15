@@ -12,8 +12,9 @@ class ExerciseLogCell: UITableViewCell, UITextFieldDelegate {
 
   
   @IBOutlet weak var setLabel: UILabel!
-  @IBOutlet weak var repTextField: UITextField!
-  @IBOutlet weak var weightTextField: UITextField!
+  @IBOutlet weak var repsLabel: UILabel!
+  @IBOutlet weak var weightLabel: UILabel!
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

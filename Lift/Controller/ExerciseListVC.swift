@@ -39,6 +39,26 @@ class ExerciseListVC: UIViewController {
     getExerciseListFromCategory()
     
   }
+  func displaySuccessAlert() {
+    let alert = UIAlertController(title: "Success", message: "Exercise Added to your workout list", preferredStyle: UIAlertController.Style.alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+          switch action.style{
+          case .default:
+              print("default")
+
+          case .cancel:
+              print("cancel")
+
+          case .destructive:
+              print("destructive")
+
+          }}))
+      self.present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+
+          alert.dismiss(animated: true, completion: nil)
+      }
+  }
   
   func getCurrentUser() {
     
@@ -83,7 +103,8 @@ extension ExerciseListVC: UITableViewDelegate, UITableViewDataSource {
     // here call addExerciseToWorkoutPlan()
     
     addExerciseToWorkoutPlan(at: indexPath)
-    print("user uid is \(user.uid)")
+    displaySuccessAlert()
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
   

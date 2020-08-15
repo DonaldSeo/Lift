@@ -30,6 +30,7 @@ class WorkoutVC: UIViewController {
 //  }
   override func viewDidLoad() {
     
+    
     self.workoutTableView.dataSource = self
     self.workoutTableView.delegate = self
     getCurrentUser()
@@ -126,9 +127,12 @@ extension WorkoutVC {
     switch segue.identifier {
     case "GoToExerciseDetail":
       let destinationVC = segue.destination as! ExerciseDetailVC
-      destinationVC.transitioningDelegate = self
+//      destinationVC.transitioningDelegate = self
+      if let indexPath = workoutTableView.indexPathForSelectedRow {
+        destinationVC.currentExercise = userWorkoutSession[indexPath.row].name
+      }
     case "GoToWorkoutCategory":
-      let destinationVC = segue.destination as! ExerciseCategoryVC
+      _ = segue.destination as! ExerciseCategoryVC
       
     default:
       return
@@ -162,8 +166,8 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "GoToExerciseDetail", sender: self)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
-  
-  
-  
 }
+
+
