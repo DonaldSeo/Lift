@@ -15,6 +15,7 @@
 		4066D61F24E4CBA600B94A91 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4066D61D24E4CBA600B94A91 /* WorkoutCell.swift */; };
 		4066D62024E4CBA600B94A91 /* WorkoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4066D61E24E4CBA600B94A91 /* WorkoutCell.xib */; };
 		407355AF24E76931002393AC /* CompletedExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407355AE24E76931002393AC /* CompletedExerciseSet.swift */; };
+		407355B124E98B18002393AC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407355B024E98B18002393AC /* ColorExtension.swift */; };
 		40937AC924DCF65A00870F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AC824DCF65A00870F66 /* AppDelegate.swift */; };
 		40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACA24DCF65A00870F66 /* SceneDelegate.swift */; };
 		40937ACD24DCF65A00870F66 /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937ACC24DCF65A00870F66 /* ExerciseCategoryVC.swift */; };
@@ -41,6 +42,7 @@
 		4066D61D24E4CBA600B94A91 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		4066D61E24E4CBA600B94A91 /* WorkoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCell.xib; sourceTree = "<group>"; };
 		407355AE24E76931002393AC /* CompletedExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedExerciseSet.swift; sourceTree = "<group>"; };
+		407355B024E98B18002393AC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		40937AC524DCF65A00870F66 /* Lift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40937AC824DCF65A00870F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40937ACA24DCF65A00870F66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				40937AE924DE45CC00870F66 /* UserWorkoutItem.swift */,
 				40937AF424DF5E4E00870F66 /* User.swift */,
 				407355AE24E76931002393AC /* CompletedExerciseSet.swift */,
+				407355B024E98B18002393AC /* ColorExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				40937AC924DCF65A00870F66 /* AppDelegate.swift in Sources */,
 				40937AE524DDF6C800870F66 /* WorkoutVC.swift in Sources */,
 				40937AF524DF5E4E00870F66 /* User.swift in Sources */,
+				407355B124E98B18002393AC /* ColorExtension.swift in Sources */,
 				40937ACB24DCF65A00870F66 /* SceneDelegate.swift in Sources */,
 				4066D61B24E4C00C00B94A91 /* PopAnimator.swift in Sources */,
 				407355AF24E76931002393AC /* CompletedExerciseSet.swift in Sources */,

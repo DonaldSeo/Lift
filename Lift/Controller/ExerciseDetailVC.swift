@@ -38,7 +38,6 @@ class ExerciseDetailVC: UIViewController {
   let rootReference = Database.database().reference()
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
   var user: User!
-  let barPlotData = [20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0, 20.0, 30.0, 40.0, 50.0, 90.0]
   
   
   
@@ -112,27 +111,29 @@ class ExerciseDetailVC: UIViewController {
 
     barPlot.barWidth = 25
     barPlot.barLineWidth = 1
-    barPlot.barLineColor = UIColor.blue
-    barPlot.barColor = UIColor.green
+    barPlot.barLineColor = UIColor(rgb: 0x777777)
+    barPlot.barColor = UIColor(rgb: 0x555555)
     
     barPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
     barPlot.animationDuration = 1.5
     
+    
     // Setup the reference lines
     let referenceLines = ReferenceLines()
 
-    referenceLines.referenceLineLabelFont = UIFont.boldSystemFont(ofSize: 8)
+    referenceLines.referenceLineLabelFont = UIFont.boldSystemFont(ofSize: 12)
     referenceLines.referenceLineColor = UIColor.white.withAlphaComponent(0.2)
     referenceLines.referenceLineLabelColor = UIColor.white
     
     referenceLines.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
 
     // Setup the graph
-    graphView.backgroundFillColor = UIColor.orange
+    graphView.backgroundFillColor = UIColor(rgb: 0x333333)
 
     graphView.shouldAnimateOnStartup = true
 
-    graphView.rangeMax = 100
+    graphView.rangeMax = 1000
+    graphView.shouldAdaptRange = true
     graphView.rangeMin = 0
 
     // Add everything
@@ -191,7 +192,9 @@ extension ExerciseDetailVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     switch editingStyle {
     case .delete:
-      userWorkoutReference.child(user.uid).child("PR").child("\(currentExercise)").child(completedSet[indexPath.row].key).setValue(nil)
+      if completedSet[indexPath.row].key != "" {
+        userWorkoutReference.child(user.uid).child("PR").child("\(currentExercise)").child(completedSet[indexPath.row].key).setValue(nil)
+      }
       completedSet.remove(at: indexPath.row)
       tableView.reloadData()
     default:
