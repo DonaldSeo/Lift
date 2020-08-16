@@ -133,7 +133,7 @@ class ExerciseDetailVC: UIViewController {
     graphView.shouldAnimateOnStartup = true
 
     graphView.rangeMax = 1000
-    graphView.shouldAdaptRange = true
+//    graphView.shouldAdaptRange = true
     graphView.rangeMin = 0
 
     // Add everything
