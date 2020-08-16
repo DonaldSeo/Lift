@@ -30,7 +30,11 @@ class LoginVC: UIViewController {
       if user != nil {
         print("hello")
         print(user?.uid)
-        self.performSegue(withIdentifier: self.loginToList, sender: nil)
+        if user!.isEmailVerified {
+          self.performSegue(withIdentifier: self.loginToList, sender: nil)
+          self.textFieldLoginEmail.text?.removeAll()
+          self.textFieldLoginPassword.text?.removeAll()
+        }
       } else {
         print("login failed")
       }
@@ -47,9 +51,12 @@ class LoginVC: UIViewController {
       } else {
         print("login successful")
         print(result as Any)
+        self.performSegue(withIdentifier: self.loginToList, sender: nil)
+        self.textFieldLoginEmail.text?.removeAll()
+        self.textFieldLoginPassword.text?.removeAll()
       }
     }
-//    performSegue(withIdentifier: loginToList, sender: nil)
+//
   }
   
   
@@ -61,7 +68,7 @@ class LoginVC: UIViewController {
     let warningCancelAction = UIAlertAction(title: "Cancel", style: .default)
     warningAlert.addAction(warningCancelAction)
     
-    let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+    let saveAction = UIAlertAction(title: "Register", style: .default) { action in
       
       let emailField = alert.textFields![0]
       let passwordField = alert.textFields![1]
@@ -74,6 +81,8 @@ class LoginVC: UIViewController {
             case .weakPassword:
               print("please provide a strong password")
               self.present(warningAlert, animated: true, completion: nil)
+            case .emailAlreadyInUse:
+              print("please use different email. Already in Use")
             default:
               print("There is an error")
             }
@@ -82,6 +91,7 @@ class LoginVC: UIViewController {
         if AuthDataResult != nil {
           AuthDataResult?.user.sendEmailVerification(completion: { error in
             print(error?.localizedDescription)
+//
           })
         }
         
@@ -106,5 +116,4 @@ class LoginVC: UIViewController {
     
     present(alert, animated: true, completion: nil)
   }
-  
 }
