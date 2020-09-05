@@ -24,6 +24,7 @@ class ExerciseCategoryVC: UIViewController {
     
     // Do any additional setup after loading the view.
     getExerciseCategory()
+    print(category)
   }
   
 //  override func prepare(for segue: UIStoryboardSegue, sender: Any?)

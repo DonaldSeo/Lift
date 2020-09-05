@@ -64,6 +64,25 @@ class WorkoutVC: UIViewController {
 //      self.workoutTableView.reloadData()
 //    })
   }
+  @IBAction func customExerciseButtonPressed(_ sender: Any) {
+    let alert = UIAlertController(title: "Custom Exercise", message: "Add your own exericse", preferredStyle: .alert)
+    
+    let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+      let titleField = alert.textFields![0]
+      let exercise : [String: Any] = ["name" : titleField.text]
+      let newExerciseRef = self.userWorkoutReference.child(self.currentUser.uid).child("List").childByAutoId()
+      newExerciseRef.setValue(exercise)
+    }
+    let cancelAction = UIAlertAction(title: "Cancel",
+                                     style: .default)
+    
+    alert.addTextField { textTitle in
+      textTitle.placeholder = "Exercise Title"
+    }
+    alert.addAction(saveAction)
+    alert.addAction(cancelAction)
+    present(alert, animated: true, completion: nil)
+  }
   
   @IBAction func signOutButtonPressed(_ sender: Any) {
     do {

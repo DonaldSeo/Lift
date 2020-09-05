@@ -12,7 +12,7 @@ class Networking {
   
   static let sharedInstance = Networking()
   
-  let exerciseCategoryURL = "https://wger.de/api/v2/exercisecategory"
+  let exerciseCategoryURL = "https://wger.de/api/v2/exercisecategory/"
   let exerciseListFromCategoryURL = "https://wger.de/api/v2/exercise/?status=2&language=2&category="
   
   
@@ -27,11 +27,12 @@ class Networking {
         let data = data else {
           return
       }
+      print(String(data: data, encoding: .utf8))
       let decoder = JSONDecoder()
-      guard let category = try? decoder.decode([ExerciseCategory].self, from: data) else {
+      guard let category = try? decoder.decode(AllCategory.self, from: data) else {
         return
       }
-      completion(category)
+      completion(category.results)
     }.resume()
   }
   
@@ -46,10 +47,10 @@ class Networking {
           return
       }
       let decoder = JSONDecoder()
-      guard let exerciseList = try? decoder.decode([Exercise].self, from: data) else {
+      guard let exerciseList = try? decoder.decode(AllExercise.self, from: data) else {
         return
       }
-      completion(exerciseList)
+      completion(exerciseList.results)
     }.resume()
   }
 }
