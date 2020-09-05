@@ -12,7 +12,7 @@ class Networking {
   
   static let sharedInstance = Networking()
   
-  let exerciseCategoryURL = "https://wger.de/api/v2/exercisecategory"
+  let exerciseCategoryURL = "https://wger.de/api/v2/exercisecategory/"
   let exerciseListFromCategoryURL = "https://wger.de/api/v2/exercise/?status=2&language=2&category="
   
   
