@@ -184,10 +184,8 @@ extension WorkoutVC {
 extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 0 {
-      return userWorkoutSession.count
-    }
-    return 0
+    let matchingSection = userWorkoutSession.filter {$0.section == section}
+    return matchingSection.count
   }
   func numberOfSections(in tableView: UITableView) -> Int {
     tableviewSections.count
@@ -196,9 +194,8 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath)
     
-    if indexPath.section == userWorkoutSession[indexPath.row].section {
-      cell.textLabel?.text = userWorkoutSession[indexPath.row].name
-    }
+    let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
+    cell.textLabel?.text = matchingSession[indexPath.row].name
     return cell
   }
   
@@ -221,7 +218,6 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   }
   
 }
-//TODO: Data Model updated with WorkoutSection key value. need to update numberOfRowsInSection for Tableview
 extension WorkoutVC: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
