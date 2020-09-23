@@ -13,11 +13,13 @@ struct UserWorkoutItem {
   
   let key: String
   let name: String
+  let section: Int
   let ref: DatabaseReference?
   
-  init(name: String, key: String = "") {
+  init(name: String, section: Int, key: String = "") {
     self.key = key
     self.name = name
+    self.section = section
     self.ref = nil
   }
   
@@ -25,6 +27,7 @@ struct UserWorkoutItem {
     key = snapshot.key
     let snapshotValue = snapshot.value as! [String: AnyObject]
     name = snapshotValue["name"] as! String
+    section = snapshotValue["workoutSection"] as! Int
     ref = snapshot.ref
   }
   
