@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gpK-bw-IVd">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gpK-bw-IVd">
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +25,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="flo-DP-rgw">
                                 <rect key="frame" x="0.0" y="132" width="375" height="646"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="v8X-05-bO8">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
@@ -36,7 +38,8 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="flo-DP-rgw" secondAttribute="bottom" id="HM7-Bq-KLY"/>
                             <constraint firstItem="fhz-oX-ym0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="W51-FV-ox2"/>
@@ -47,7 +50,6 @@
                             <constraint firstItem="fhz-oX-ym0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ss2-lt-k1I"/>
                             <constraint firstItem="fhz-oX-ym0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vqd-kC-ZOd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="aeh-Dj-Tk8"/>
                     <connections>
@@ -75,7 +77,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bIw-bi-ztJ">
                                 <rect key="frame" x="0.0" y="129.66666666666666" width="375" height="246.99999999999997"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="247" id="PLt-vL-lID"/>
                                 </constraints>
@@ -99,7 +101,7 @@
                                     <action selector="exerciseDetailViewDismiss:" destination="t09-w7-p21" eventType="touchUpInside" id="ghw-Ic-dGE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3b0-z9-2ot">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3b0-z9-2ot">
                                 <rect key="frame" x="300" y="86.666666666666671" width="55" height="30"/>
                                 <state key="normal" title="Add Set"/>
                                 <connections>
@@ -139,7 +141,8 @@
                                 <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="X9r-Fc-xYe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="2m4-7h-0Il" secondAttribute="bottom" constant="10" id="0Bl-Ro-RMr"/>
                             <constraint firstItem="BH9-M7-bUH" firstAttribute="top" secondItem="X9r-Fc-xYe" secondAttribute="top" constant="50" id="0iR-kw-2Gu"/>
@@ -168,7 +171,6 @@
                             <constraint firstItem="8w7-UK-Ka6" firstAttribute="trailing" secondItem="X9r-Fc-xYe" secondAttribute="trailing" id="vnR-bW-V3Z"/>
                             <constraint firstItem="8w7-UK-Ka6" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="zud-YA-i3y"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="X9r-Fc-xYe"/>
                     </view>
                     <navigationItem key="navigationItem" id="fbN-oQ-syv"/>
                     <connections>
@@ -205,14 +207,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="fitness-forever" translatesAutoresizingMaskIntoConstraints="NO" id="3Il-Qj-KU1">
                                 <rect key="frame" x="30" y="74" width="315" height="72"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f28-Me-N4O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f28-Me-N4O">
                                 <rect key="frame" x="168.66666666666666" y="352" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="gpK-bw-IVd" eventType="touchUpInside" id="c0D-fw-IAu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEt-Al-IX4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEt-Al-IX4">
                                 <rect key="frame" x="161.66666666666666" y="397" width="52" height="30"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
@@ -220,7 +222,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JZt-ca-TYX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JZt-ca-TYX" firstAttribute="bottom" secondItem="NEt-Al-IX4" secondAttribute="bottom" constant="351" id="30S-2v-gQm"/>
                             <constraint firstItem="3Il-Qj-KU1" firstAttribute="centerX" secondItem="ffl-9F-A7K" secondAttribute="centerX" id="36a-du-j0R"/>
@@ -238,7 +241,6 @@
                             <constraint firstItem="3Il-Qj-KU1" firstAttribute="top" secondItem="JZt-ca-TYX" secondAttribute="top" constant="30" id="xU3-Ac-YcF"/>
                             <constraint firstItem="NEt-Al-IX4" firstAttribute="top" secondItem="f28-Me-N4O" secondAttribute="bottom" constant="15" id="zXh-CG-0CE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JZt-ca-TYX"/>
                     </view>
                     <connections>
                         <outlet property="LoginViewLogo" destination="3Il-Qj-KU1" id="Dl7-Kt-IXk"/>
@@ -260,16 +262,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="116" translatesAutoresizingMaskIntoConstraints="NO" id="tXk-z2-8dp">
-                                <rect key="frame" x="9.6666666666666572" y="138" width="356" height="30"/>
+                                <rect key="frame" x="9.6666666666666572" y="108" width="356" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSl-FG-J1P">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSl-FG-J1P">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
                                         <state key="normal" title="Exercise Category"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="GoToWorkoutCategory" id="7mr-xf-JW8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-3E-GEC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-3E-GEC">
                                         <rect key="frame" x="241" y="0.0" width="115" height="30"/>
                                         <state key="normal" title="Custom Exercise"/>
                                         <connections>
@@ -279,8 +281,8 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qog-Cf-qSg">
-                                <rect key="frame" x="0.0" y="168" width="375" height="610"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="640"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutCell" id="ZE1-JL-aCe">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
@@ -293,21 +295,26 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7mr-Yk-Q0E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qog-Cf-qSg" firstAttribute="leading" secondItem="7mr-Yk-Q0E" secondAttribute="leading" id="IhO-O5-ues"/>
                             <constraint firstItem="qog-Cf-qSg" firstAttribute="trailing" secondItem="7mr-Yk-Q0E" secondAttribute="trailing" id="Ulq-5V-V9f"/>
                             <constraint firstItem="tXk-z2-8dp" firstAttribute="centerX" secondItem="aEe-7B-9Xi" secondAttribute="centerX" id="ekF-I1-vUt"/>
                             <constraint firstItem="7mr-Yk-Q0E" firstAttribute="bottom" secondItem="qog-Cf-qSg" secondAttribute="bottom" id="h0C-CJ-cKF"/>
                             <constraint firstItem="qog-Cf-qSg" firstAttribute="top" secondItem="tXk-z2-8dp" secondAttribute="bottom" id="pK4-vu-uum"/>
-                            <constraint firstItem="tXk-z2-8dp" firstAttribute="top" secondItem="7mr-Yk-Q0E" secondAttribute="top" constant="50" id="yWE-4k-dVA"/>
+                            <constraint firstItem="tXk-z2-8dp" firstAttribute="top" secondItem="7mr-Yk-Q0E" secondAttribute="top" constant="20" id="yWE-4k-dVA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7mr-Yk-Q0E"/>
                     </view>
                     <navigationItem key="navigationItem" title="Workout" id="NAs-ra-3zi">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="zLk-PS-cf6">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="zLk-PS-cf6">
                             <connections>
                                 <action selector="signOutButtonPressed:" destination="gKN-J5-PYT" id="qJk-66-kGg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="rZQ-eU-r9O">
+                            <connections>
+                                <action selector="toggleEditMode:" destination="gKN-J5-PYT" id="qUc-2V-U6x"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -330,7 +337,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XPa-ud-b6M">
                                 <rect key="frame" x="0.0" y="132" width="375" height="646"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseCell" id="eVd-ZG-nzN">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
@@ -349,7 +356,8 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="32t-jD-PBi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XPa-ud-b6M" firstAttribute="leading" secondItem="32t-jD-PBi" secondAttribute="leading" id="72c-yf-NDD"/>
                             <constraint firstItem="96u-7O-Mtd" firstAttribute="centerX" secondItem="DxI-sP-8T7" secondAttribute="centerX" id="ALM-fz-RIl"/>
@@ -360,7 +368,6 @@
                             <constraint firstItem="96u-7O-Mtd" firstAttribute="top" secondItem="32t-jD-PBi" secondAttribute="top" id="hlE-Bm-7hA"/>
                             <constraint firstItem="96u-7O-Mtd" firstAttribute="leading" secondItem="32t-jD-PBi" secondAttribute="leading" id="pwt-0a-4P7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="32t-jD-PBi"/>
                     </view>
                     <navigationItem key="navigationItem" id="0zj-dG-ZnX"/>
                     <connections>
@@ -395,5 +402,8 @@
     <resources>
         <image name="clear.fill" catalog="system" width="128" height="114"/>
         <image name="fitness-forever" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

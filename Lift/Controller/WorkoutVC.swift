@@ -15,6 +15,8 @@ class WorkoutVC: UIViewController {
   @IBOutlet weak var workoutTableView: UITableView!
   
   let transition = PopAnimator()
+  var selectedSection: Int?
+  let tableviewSections = ["Unsorted", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   
   var currentUser: User!
   var userWorkoutSession: [UserWorkoutItem] = []
@@ -65,11 +67,19 @@ class WorkoutVC: UIViewController {
 //    })
   }
   @IBAction func customExerciseButtonPressed(_ sender: Any) {
+    
+    
     let alert = UIAlertController(title: "Custom Exercise", message: "Add your own exericse", preferredStyle: .alert)
+    
+    let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 110, width: 260, height: 100))
+    
+    alert.view.addSubview(pickerFrame)
+    pickerFrame.dataSource = self
+    pickerFrame.delegate = self
     
     let saveAction = UIAlertAction(title: "Save", style: .default) { action in
       let titleField = alert.textFields![0]
-      let exercise : [String: Any] = ["name" : titleField.text]
+      let exercise: [String: Any] = ["name" : titleField.text, "workoutSection" : self.selectedSection]
       let newExerciseRef = self.userWorkoutReference.child(self.currentUser.uid).child("List").childByAutoId()
       newExerciseRef.setValue(exercise)
     }
@@ -81,6 +91,10 @@ class WorkoutVC: UIViewController {
     }
     alert.addAction(saveAction)
     alert.addAction(cancelAction)
+    
+    var height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: self.view.frame.height * 0.3)
+    alert.view.addConstraint(height);
+    
     present(alert, animated: true, completion: nil)
   }
   
@@ -98,6 +112,11 @@ class WorkoutVC: UIViewController {
     if let authData = Auth.auth().currentUser {
       currentUser = User(uid: authData.uid, email: authData.email!)
     }
+  }
+  
+  @IBAction func toggleEditMode(_ sender: UIBarButtonItem) {
+    workoutTableView.isEditing.toggle()
+    sender.title = sender.title == "Edit" ? "Done" : "Edit"
   }
 }
 // MARK: - viewcontroller transition animation delegate
@@ -165,13 +184,23 @@ extension WorkoutVC {
 extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    userWorkoutSession.count
+    let matchingSection = userWorkoutSession.filter {$0.section == section}
+    return matchingSection.count
+  }
+  func numberOfSections(in tableView: UITableView) -> Int {
+    tableviewSections.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath)
-    cell.textLabel?.text = userWorkoutSession[indexPath.row].name
+    
+    let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
+    cell.textLabel?.text = matchingSession[indexPath.row].name
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return tableviewSections[section]
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -187,6 +216,43 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     performSegue(withIdentifier: "GoToExerciseDetail", sender: self)
     tableView.deselectRow(at: indexPath, animated: true)
   }
+  
 }
+extension WorkoutVC: UIPickerViewDelegate, UIPickerViewDataSource {
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    tableviewSections.count
+  }
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    tableviewSections[row]
+  }
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    
+    switch row {
+    case 0:
+      selectedSection = 0
+    case 1:
+      selectedSection = 1
+    case 2:
+      selectedSection = 2
+    case 3:
+      selectedSection = 3
+    case 4:
+      selectedSection = 4
+    case 5:
+      selectedSection = 5
+    case 6:
+      selectedSection = 6
+    case 7:
+      selectedSection = 7
+    default:
+      break
+    }
+  }
 
-
+  
+}
