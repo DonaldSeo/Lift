@@ -22,6 +22,7 @@ class ExerciseDetailVC: UIViewController {
   @IBOutlet weak var repsTextField: UITextField!
   @IBOutlet weak var weightTextField: UITextField!
   @IBOutlet weak var addSetButton: UIButton!
+  @IBOutlet weak var exerciseNoteTextView: UITextView!
   
   
   private var disabledCellsIndexPath = [IndexPath]()
@@ -51,6 +52,10 @@ class ExerciseDetailVC: UIViewController {
     
     getCurrentUser()
     exerciseTitle.text = currentExercise
+    
+    exerciseNoteTextView.delegate = self
+    exerciseNoteTextView.text = "Add exercise note (# sets * # reps)"
+    exerciseNoteTextView.textColor = UIColor.lightGray
     
     setTableView.dataSource = self
     setTableView.delegate = self
@@ -245,4 +250,32 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+}
+
+extension ExerciseDetailVC: UITextViewDelegate {
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView.textColor == UIColor.lightGray {
+      textView.text = nil
+      textView.textColor = UIColor.black
+    }
+  }
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text.isEmpty {
+      textView.text = "Add exercise note (# sets * # reps)"
+      textView.textColor = UIColor.lightGray
+    }
+  }
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    // get the current text, or use an empty string if that failed
+    let currentText = textView.text ?? ""
+
+    // attempt to read the range they are trying to change, or exit if we can't
+    guard let stringRange = Range(range, in: currentText) else { return false }
+
+    // add their new text to the existing text
+    let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+    // make sure the result is under 16 characters
+    return updatedText.count <= 20
+  }
 }
