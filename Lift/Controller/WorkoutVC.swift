@@ -167,7 +167,8 @@ extension WorkoutVC {
       let destinationVC = segue.destination as! ExerciseDetailVC
 //      destinationVC.transitioningDelegate = self
       if let indexPath = workoutTableView.indexPathForSelectedRow {
-        destinationVC.currentExercise = userWorkoutSession[indexPath.row].name
+        let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
+        destinationVC.currentExercise = matchingSession[indexPath.row].name
       }
     case "GoToWorkoutCategory":
       _ = segue.destination as! ExerciseCategoryVC
@@ -213,6 +214,7 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print("indexpath.row \(indexPath.row) and indexpath.section \(indexPath.section)")
     performSegue(withIdentifier: "GoToExerciseDetail", sender: self)
     tableView.deselectRow(at: indexPath, animated: true)
   }
