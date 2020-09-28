@@ -18,6 +18,8 @@ class WorkoutVC: UIViewController {
   var selectedSection: Int?
   let tableviewSections = ["Unsorted", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   
+  let defaults = UserDefaults.standard
+  
   var currentUser: User!
   var userWorkoutSession: [UserWorkoutItem] = []
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
@@ -169,6 +171,7 @@ extension WorkoutVC {
       if let indexPath = workoutTableView.indexPathForSelectedRow {
         let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
         destinationVC.currentExercise = matchingSession[indexPath.row].name
+        destinationVC.selectedCellIndexPath = indexPath
       }
     case "GoToWorkoutCategory":
       _ = segue.destination as! ExerciseCategoryVC
@@ -197,6 +200,8 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     
     let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
     cell.textLabel?.text = matchingSession[indexPath.row].name
+//    cell.detailTextLabel?.text = defaults.dictionary(forKey: matchingSession[indexPath.row].name)
+    print(defaults.dictionary(forKey: matchingSession[indexPath.row].name))
     return cell
   }
   

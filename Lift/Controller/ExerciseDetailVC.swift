@@ -40,6 +40,9 @@ class ExerciseDetailVC: UIViewController {
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
   var user: User!
   
+  var selectedCellIndexPath: IndexPath?
+  let defaults = UserDefaults.standard
+  
   
   
   override func viewDidLoad() {
@@ -52,8 +55,11 @@ class ExerciseDetailVC: UIViewController {
     
     getCurrentUser()
     exerciseTitle.text = currentExercise
+    print(selectedCellIndexPath!)
     
     exerciseNoteTextView.delegate = self
+//    let workoutNote = defaults.object(forKey: currentExercise) as? [Int : [Int : String]] ?? "Add exercise note (# sets * # reps)"
+//    exerciseNoteTextView.text = workoutNote[selectedCellIndexPath!.section][selectedCellIndexPath!.row]
     exerciseNoteTextView.text = "Add exercise note (# sets * # reps)"
     exerciseNoteTextView.textColor = UIColor.lightGray
     
@@ -263,6 +269,19 @@ extension ExerciseDetailVC: UITextViewDelegate {
     if textView.text.isEmpty {
       textView.text = "Add exercise note (# sets * # reps)"
       textView.textColor = UIColor.lightGray
+    }
+    if !textView.text.isEmpty && textView.text != "Add exercise note (# sets * # reps)" {
+      var workoutNoteDict = [Int : [Int : String]]()
+      workoutNoteDict.updateValue([selectedCellIndexPath!.row : textView.text], forKey: selectedCellIndexPath!.section)
+      do {
+        let data = try NSKeyedArchiver.archivedData(withRootObject: workoutNoteDict, requiringSecureCoding: false)
+        defaults.set(data, forKey: currentExercise)
+        let workoutNote = defaults.object(forKey: currentExercise)
+        let dict = NSKeyedUnarchiver.unarchivedObject(ofClass: <#T##NSCoding.Protocol#>, from: <#T##Data#>)
+        print(dict)
+      } catch {
+        print("could not archive dict data")
+      }
     }
   }
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
