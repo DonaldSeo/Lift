@@ -27,7 +27,7 @@ struct UserWorkoutItem {
     key = snapshot.key
     let snapshotValue = snapshot.value as! [String: AnyObject]
     name = snapshotValue["name"] as! String
-    section = snapshotValue["workoutSection"] as! Int
+    section = snapshotValue["workoutSection"] as? Int ?? 0
     ref = snapshot.ref
   }
   

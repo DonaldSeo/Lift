@@ -56,6 +56,8 @@ class WorkoutVC: UIViewController {
         print("not signed in")
       }
     }
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
 //    print("current user is \(user.email) with UID \(user.uid)")
 //    userWorkoutReference.child(currentUser.uid).child("List").observe(.value, with: { snapshot in
 //      var newWorkout: [UserWorkoutItem] = []
@@ -68,6 +70,13 @@ class WorkoutVC: UIViewController {
 //      self.workoutTableView.reloadData()
 //    })
   }
+  @objc func onDidReceiveData(_ notification: Notification)
+  {
+    workoutTableView.reloadData()
+  }
+
+  
+  
   @IBAction func customExerciseButtonPressed(_ sender: Any) {
     
     
@@ -155,6 +164,22 @@ extension WorkoutVC: UIViewControllerTransitioningDelegate {
     transition.presenting = false
     return transition
   }
+  
+  func getExerciseNote(at indexPath: IndexPath) -> String {
+    if let workoutNote = defaults.dictionary(forKey: String(indexPath.section)) {
+      if let workoutNoteText = workoutNote[String(indexPath.row)] {
+        return workoutNoteText as! String
+      }
+    }
+    return "Add Note"
+  }
+  
+  func updateExerciseNote(at indexPath: IndexPath) {
+    if var workoutNote = defaults.dictionary(forKey: String(indexPath.section)) {
+      workoutNote[String(indexPath.row)] = nil
+      defaults.set(workoutNote, forKey: String(indexPath.section))
+    }
+  }
 
 
   
@@ -200,8 +225,8 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     
     let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
     cell.textLabel?.text = matchingSession[indexPath.row].name
-//    cell.detailTextLabel?.text = defaults.dictionary(forKey: matchingSession[indexPath.row].name)
-    print(defaults.dictionary(forKey: matchingSession[indexPath.row].name))
+    cell.detailTextLabel?.text = getExerciseNote(at: indexPath)
+//    cell.detailTextLabel?.text = "hello"
     return cell
   }
   
@@ -214,6 +239,7 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
       let workoutItem = userWorkoutSession[indexPath.row]
       userWorkoutReference.child(currentUser.uid).child("List").child(workoutItem.key).setValue(nil)
       userWorkoutSession.remove(at: indexPath.row)
+      updateExerciseNote(at: indexPath)
       workoutTableView.reloadData()
     }
   }
@@ -260,6 +286,8 @@ extension WorkoutVC: UIPickerViewDelegate, UIPickerViewDataSource {
       break
     }
   }
+}
 
-  
+extension Notification.Name {
+  static let didReceiveData = Notification.Name("didReceiveData")
 }

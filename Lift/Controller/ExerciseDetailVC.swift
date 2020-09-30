@@ -60,8 +60,14 @@ class ExerciseDetailVC: UIViewController {
     exerciseNoteTextView.delegate = self
 //    let workoutNote = defaults.object(forKey: currentExercise) as? [Int : [Int : String]] ?? "Add exercise note (# sets * # reps)"
 //    exerciseNoteTextView.text = workoutNote[selectedCellIndexPath!.section][selectedCellIndexPath!.row]
-    exerciseNoteTextView.text = "Add exercise note (# sets * # reps)"
-    exerciseNoteTextView.textColor = UIColor.lightGray
+    if let workoutNote = defaults.dictionary(forKey: String(selectedCellIndexPath!.section)) {
+      if let workoutNoteText =  workoutNote[String(selectedCellIndexPath!.row)] {
+        exerciseNoteTextView.text = workoutNoteText as! String
+      }
+    } else {
+      exerciseNoteTextView.text = "Add exercise note (# sets * # reps)"
+      exerciseNoteTextView.textColor = UIColor.lightGray
+    }
     
     setTableView.dataSource = self
     setTableView.delegate = self
@@ -271,20 +277,18 @@ extension ExerciseDetailVC: UITextViewDelegate {
       textView.textColor = UIColor.lightGray
     }
     if !textView.text.isEmpty && textView.text != "Add exercise note (# sets * # reps)" {
-      var workoutNoteDict = [Int : [Int : String]]()
-      workoutNoteDict.updateValue([selectedCellIndexPath!.row : textView.text], forKey: selectedCellIndexPath!.section)
-      do {
-        let data = try NSKeyedArchiver.archivedData(withRootObject: workoutNoteDict, requiringSecureCoding: false)
-        defaults.set(data, forKey: currentExercise)
-        let workoutNote = defaults.object(forKey: currentExercise)
-        let dict = NSKeyedUnarchiver.unarchivedObject(ofClass: <#T##NSCoding.Protocol#>, from: <#T##Data#>)
-        print(dict)
-      } catch {
-        print("could not archive dict data")
-      }
+      var workoutNoteDict = defaults.dictionary(forKey: String(selectedCellIndexPath!.section)) as? [String : String] ?? [String : String]()
+      workoutNoteDict.updateValue(textView.text, forKey: String(selectedCellIndexPath!.row))
+      defaults.set(workoutNoteDict, forKey: String(selectedCellIndexPath!.section))
+      NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
   }
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    
+    if text == "\n" {
+        textView.resignFirstResponder()
+        return false
+    }
     // get the current text, or use an empty string if that failed
     let currentText = textView.text ?? ""
 
