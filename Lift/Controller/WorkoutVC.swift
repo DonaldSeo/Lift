@@ -87,9 +87,11 @@ class WorkoutVC: UIViewController {
     alert.view.addSubview(pickerFrame)
     pickerFrame.dataSource = self
     pickerFrame.delegate = self
+    pickerFrame.selectRow(1, inComponent: 0, animated: true)
     
     let saveAction = UIAlertAction(title: "Save", style: .default) { action in
       let titleField = alert.textFields![0]
+      print("current selected section is \(self.selectedSection)")
       let exercise: [String: Any] = ["name" : titleField.text, "workoutSection" : self.selectedSection]
       let newExerciseRef = self.userWorkoutReference.child(self.currentUser.uid).child("List").childByAutoId()
       newExerciseRef.setValue(exercise)
@@ -236,9 +238,12 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let workoutItem = userWorkoutSession[indexPath.row]
+      print(indexPath.section)
+      let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
+      let workoutItem = matchingSession[indexPath.row]
       userWorkoutReference.child(currentUser.uid).child("List").child(workoutItem.key).setValue(nil)
-      userWorkoutSession.remove(at: indexPath.row)
+      //remove at indexPath.row where indexPath.section is current section
+//      userWorkoutSession.remove(at: indexPath.row)
       updateExerciseNote(at: indexPath)
       workoutTableView.reloadData()
     }
@@ -283,7 +288,7 @@ extension WorkoutVC: UIPickerViewDelegate, UIPickerViewDataSource {
     case 7:
       selectedSection = 7
     default:
-      break
+      selectedSection = 0
     }
   }
 }
