@@ -30,7 +30,6 @@
 		40937AEC24DE4B4D00870F66 /* ExerciseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AEB24DE4B4D00870F66 /* ExerciseListVC.swift */; };
 		40937AF324DF4B7500870F66 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AF224DF4B7500870F66 /* LoginVC.swift */; };
 		40937AF524DF5E4E00870F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AF424DF5E4E00870F66 /* User.swift */; };
-		40DECDB62526B5720005A9EE /* CustomExerciseEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DECDB52526B5720005A9EE /* CustomExerciseEditVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +60,6 @@
 		40937AF224DF4B7500870F66 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		40937AF424DF5E4E00870F66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		40937AF624DF60AE00870F66 /* Lift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lift.entitlements; sourceTree = "<group>"; };
-		40DECDB52526B5720005A9EE /* CustomExerciseEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseEditVC.swift; sourceTree = "<group>"; };
 		4F4DE6D8543D0834D0095B81 /* Pods-Lift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lift.release.xcconfig"; path = "Target Support Files/Pods-Lift/Pods-Lift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,7 +167,6 @@
 				40937ACC24DCF65A00870F66 /* ExerciseCategoryVC.swift */,
 				40937AEB24DE4B4D00870F66 /* ExerciseListVC.swift */,
 				4066D61724E37F2700B94A91 /* ExerciseDetailVC.swift */,
-				40DECDB52526B5720005A9EE /* CustomExerciseEditVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40DECDB62526B5720005A9EE /* CustomExerciseEditVC.swift in Sources */,
 				40937ADF24DDD68E00870F66 /* Exercise.swift in Sources */,
 				4066D61F24E4CBA600B94A91 /* WorkoutCell.swift in Sources */,
 				40937ADD24DDD63E00870F66 /* NetworkingHandler.swift in Sources */,

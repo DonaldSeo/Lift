@@ -61,53 +61,6 @@
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="118.52678571428571"/>
         </scene>
-        <!--Custom Exercise EditVC-->
-        <scene sceneID="2K7-25-Cv4">
-            <objects>
-                <viewController id="IIV-cg-Oea" customClass="CustomExerciseEditVC" customModule="Lift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vbd-3s-yMa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgP-31-kpj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <items>
-                                    <navigationItem title="Title" id="EX3-xm-y2g">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="pxi-Ou-xnD"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="SAW-jE-Y8V"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7kl-04-f1S">
-                                <rect key="frame" x="0.0" y="56" width="375" height="668"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LCr-JA-aPq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Lqx-aM-x0Q"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Lqx-aM-x0Q" firstAttribute="bottom" secondItem="7kl-04-f1S" secondAttribute="bottom" id="4Hf-Nh-CHL"/>
-                            <constraint firstItem="7kl-04-f1S" firstAttribute="top" secondItem="qgP-31-kpj" secondAttribute="bottom" id="E1N-rz-73o"/>
-                            <constraint firstItem="7kl-04-f1S" firstAttribute="leading" secondItem="Lqx-aM-x0Q" secondAttribute="leading" id="F18-fV-bOg"/>
-                            <constraint firstItem="qgP-31-kpj" firstAttribute="top" secondItem="Lqx-aM-x0Q" secondAttribute="top" id="Pd5-4P-Whq"/>
-                            <constraint firstItem="qgP-31-kpj" firstAttribute="trailing" secondItem="Lqx-aM-x0Q" secondAttribute="trailing" id="Rr3-3W-JEx"/>
-                            <constraint firstItem="7kl-04-f1S" firstAttribute="top" secondItem="qgP-31-kpj" secondAttribute="bottom" id="TUR-wI-1Ct"/>
-                            <constraint firstItem="qgP-31-kpj" firstAttribute="leading" secondItem="Lqx-aM-x0Q" secondAttribute="leading" id="fjI-Mk-HST"/>
-                            <constraint firstItem="7kl-04-f1S" firstAttribute="trailing" secondItem="Lqx-aM-x0Q" secondAttribute="trailing" id="yNf-W1-gn8"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgy-qu-YQz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1668" y="1110.5911330049262"/>
-        </scene>
         <!--Exercise DetailVC-->
         <scene sceneID="axl-L7-h3U">
             <objects>
@@ -397,7 +350,6 @@
                     <connections>
                         <outlet property="workoutTableView" destination="qog-Cf-qSg" id="eQU-mw-Wxb"/>
                         <segue destination="t09-w7-p21" kind="presentation" identifier="GoToExerciseDetail" id="SV5-Jb-Q4G"/>
-                        <segue destination="IIV-cg-Oea" kind="presentation" id="XqC-Jb-rtc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mW-39-438" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
