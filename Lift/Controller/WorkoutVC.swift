@@ -18,6 +18,8 @@ class WorkoutVC: UIViewController {
   var selectedSection: Int?
   let tableviewSections = ["Unsorted", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   
+  let defaults = UserDefaults.standard
+  
   var currentUser: User!
   var userWorkoutSession: [UserWorkoutItem] = []
   let userWorkoutReference = Database.database().reference(withPath: "Workout")
@@ -54,6 +56,8 @@ class WorkoutVC: UIViewController {
         print("not signed in")
       }
     }
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
 //    print("current user is \(user.email) with UID \(user.uid)")
 //    userWorkoutReference.child(currentUser.uid).child("List").observe(.value, with: { snapshot in
 //      var newWorkout: [UserWorkoutItem] = []
@@ -66,6 +70,11 @@ class WorkoutVC: UIViewController {
 //      self.workoutTableView.reloadData()
 //    })
   }
+  @objc func onDidReceiveData(_ notification: Notification)
+  {
+    workoutTableView.reloadData()
+  }
+  
   @IBAction func customExerciseButtonPressed(_ sender: Any) {
     
     
@@ -76,19 +85,26 @@ class WorkoutVC: UIViewController {
     alert.view.addSubview(pickerFrame)
     pickerFrame.dataSource = self
     pickerFrame.delegate = self
+    pickerFrame.selectRow(1, inComponent: 0, animated: true)
+    selectedSection = 1
     
     let saveAction = UIAlertAction(title: "Save", style: .default) { action in
       let titleField = alert.textFields![0]
+      print("current selected section is \(self.selectedSection)")
       let exercise: [String: Any] = ["name" : titleField.text, "workoutSection" : self.selectedSection]
       let newExerciseRef = self.userWorkoutReference.child(self.currentUser.uid).child("List").childByAutoId()
       newExerciseRef.setValue(exercise)
     }
+
+        
     let cancelAction = UIAlertAction(title: "Cancel",
                                      style: .default)
     
-    alert.addTextField { textTitle in
-      textTitle.placeholder = "Exercise Title"
+    alert.addTextField { textField in
+      textField.placeholder = "Exercise Title"
     }
+    
+    
     alert.addAction(saveAction)
     alert.addAction(cancelAction)
     
@@ -153,6 +169,22 @@ extension WorkoutVC: UIViewControllerTransitioningDelegate {
     transition.presenting = false
     return transition
   }
+  
+  func getExerciseNote(at indexPath: IndexPath) -> String {
+    if let workoutNote = defaults.dictionary(forKey: String(indexPath.section)) {
+      if let workoutNoteText = workoutNote[String(indexPath.row)] {
+        return workoutNoteText as! String
+      }
+    }
+    return "Add Note"
+  }
+  
+  func updateExerciseNote(at indexPath: IndexPath) {
+    if var workoutNote = defaults.dictionary(forKey: String(indexPath.section)) {
+      workoutNote[String(indexPath.row)] = nil
+      defaults.set(workoutNote, forKey: String(indexPath.section))
+    }
+  }
 
 
   
@@ -169,6 +201,7 @@ extension WorkoutVC {
       if let indexPath = workoutTableView.indexPathForSelectedRow {
         let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
         destinationVC.currentExercise = matchingSession[indexPath.row].name
+        destinationVC.selectedCellIndexPath = indexPath
       }
     case "GoToWorkoutCategory":
       _ = segue.destination as! ExerciseCategoryVC
@@ -197,6 +230,8 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
     
     let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
     cell.textLabel?.text = matchingSession[indexPath.row].name
+    cell.detailTextLabel?.text = getExerciseNote(at: indexPath)
+//    cell.detailTextLabel?.text = "hello"
     return cell
   }
   
@@ -206,9 +241,13 @@ extension WorkoutVC: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let workoutItem = userWorkoutSession[indexPath.row]
+      print(indexPath.section)
+      let matchingSession = userWorkoutSession.filter {$0.section == indexPath.section}
+      let workoutItem = matchingSession[indexPath.row]
       userWorkoutReference.child(currentUser.uid).child("List").child(workoutItem.key).setValue(nil)
-      userWorkoutSession.remove(at: indexPath.row)
+      //remove at indexPath.row where indexPath.section is current section
+//      userWorkoutSession.remove(at: indexPath.row)
+      updateExerciseNote(at: indexPath)
       workoutTableView.reloadData()
     }
   }
@@ -252,9 +291,11 @@ extension WorkoutVC: UIPickerViewDelegate, UIPickerViewDataSource {
     case 7:
       selectedSection = 7
     default:
-      break
+      selectedSection = 0
     }
   }
+}
 
-  
+extension Notification.Name {
+  static let didReceiveData = Notification.Name("didReceiveData")
 }
