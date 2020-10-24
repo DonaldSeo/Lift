@@ -188,7 +188,7 @@
                                 <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-pe-GRs">
-                                <rect key="frame" x="0.0" y="125" width="375" height="67"/>
+                                <rect key="frame" x="20" y="125" width="335" height="66"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -209,17 +209,17 @@
                             <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="bIw-bi-ztJ" secondAttribute="trailing" id="QjW-4C-wAB"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="Qs1-Od-9J5"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="JaS-Bv-fgh" secondAttribute="top" constant="191" id="SPS-02-nxO"/>
-                            <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="LaV-pe-GRs" secondAttribute="bottom" constant="-1" id="SUa-bc-Num"/>
+                            <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="LaV-pe-GRs" secondAttribute="bottom" id="SUa-bc-Num"/>
                             <constraint firstItem="2m4-7h-0Il" firstAttribute="leading" secondItem="G6A-Ij-BVd" secondAttribute="trailing" constant="11.5" id="Sry-VC-RBt"/>
                             <constraint firstItem="3b0-z9-2ot" firstAttribute="leading" secondItem="wyM-9t-HDF" secondAttribute="trailing" constant="43" id="Ss0-K9-rE5"/>
-                            <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="LaV-pe-GRs" secondAttribute="trailing" id="XqH-1G-t9I"/>
+                            <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="LaV-pe-GRs" secondAttribute="trailing" constant="20" id="XqH-1G-t9I"/>
                             <constraint firstItem="mjO-ng-V1Q" firstAttribute="top" secondItem="X9r-Fc-xYe" secondAttribute="top" constant="20" id="YCB-i9-eEd"/>
                             <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="3b0-z9-2ot" secondAttribute="trailing" constant="20" id="ag2-rj-PCj"/>
                             <constraint firstItem="3Ri-zv-MiA" firstAttribute="leading" secondItem="2m4-7h-0Il" secondAttribute="trailing" constant="17" id="cB7-sb-up1"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="G6A-Ij-BVd" secondAttribute="bottom" constant="12.333333333333329" id="ecA-Ar-TGX"/>
                             <constraint firstItem="Wen-Dc-dgX" firstAttribute="top" secondItem="bIw-bi-ztJ" secondAttribute="bottom" constant="24" id="gO4-Ni-ItO"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="2m4-7h-0Il" secondAttribute="bottom" constant="71.333333333333329" id="iNE-MB-uGY"/>
-                            <constraint firstItem="LaV-pe-GRs" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="jRd-oX-aWC"/>
+                            <constraint firstItem="LaV-pe-GRs" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" constant="20" id="jRd-oX-aWC"/>
                             <constraint firstItem="wyM-9t-HDF" firstAttribute="leading" secondItem="3Ri-zv-MiA" secondAttribute="trailing" constant="14" id="lCR-VN-06Y"/>
                             <constraint firstItem="mjO-ng-V1Q" firstAttribute="trailing" secondItem="JaS-Bv-fgh" secondAttribute="trailingMargin" id="n0H-Ev-XS0"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="2m4-7h-0Il" secondAttribute="bottom" constant="5.3333333333333286" id="o6a-nI-c05"/>
