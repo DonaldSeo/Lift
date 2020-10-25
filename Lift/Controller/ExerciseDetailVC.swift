@@ -17,7 +17,7 @@ class ExerciseDetailVC: UIViewController {
 
   @IBOutlet weak var exerciseTitle: UILabel!
   @IBOutlet weak var graphRenderView: UIView!
-  
+  @IBOutlet weak var graphSegmentedControl: UISegmentedControl!
   @IBOutlet weak var setTableView: UITableView!
   @IBOutlet weak var repsTextField: UITextField!
   @IBOutlet weak var weightTextField: UITextField!
@@ -27,12 +27,22 @@ class ExerciseDetailVC: UIViewController {
   
   private var disabledCellsIndexPath = [IndexPath]()
   var currentExercise = ""
+  var selectedSegmentIndex: Int = 1
+  var accumulatedTrainingVolume: Int = 0
   var completedSet: [CompletedExerciseSet] = []
   var completedPRData: [CompletedExerciseSet] = []
+  var trainingVolumeData: [TrainingVolume] = []
   var currentDayDate: String {
     let now = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM dd"
+    let today = dateFormatter.string(from: now)
+    return today
+  }
+  var currentDayDateYear: String {
+    let now = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM dd YYYY"
     let today = dateFormatter.string(from: now)
     return today
   }
@@ -88,6 +98,18 @@ class ExerciseDetailVC: UIViewController {
       self.completedPRData = newGraphData
       self.animateGraph()
     })
+    userWorkoutReference.child(user.uid).child("TrainingVolume").child("\(self.currentExercise)").observe(.value, with: { snapshot in
+      //create local temp list that observe and pulls from Firebase(for total volume)
+      //do not animate graph, just save it in the list
+      //animate graph when segment value changes
+      var newVolumeData: [TrainingVolume] = []
+      for item in snapshot.children {
+        let VolumeData = TrainingVolume(snapshot: item as! DataSnapshot)
+        newVolumeData.append(VolumeData)
+      }
+      self.trainingVolumeData = newVolumeData
+      self.animateGraph()
+    })
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
@@ -103,13 +125,37 @@ class ExerciseDetailVC: UIViewController {
   @IBAction func exerciseDetailViewDismiss(_ sender: Any) {
     dismiss(animated: true)
   }
+  @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+    if sender.selectedSegmentIndex == 0 {
+      self.selectedSegmentIndex = 1
+    }
+    else {
+      self.selectedSegmentIndex = 2
+    }
+    self.animateGraph()
+  }
   
   @IBAction func addSetButtonPressed(_ sender: Any) {
     if let weightText = weightTextField?.text, let repsText = repsTextField?.text {
+      let weightValue = Int(weightText) ?? 0
+      let repsValue = Int(repsText) ?? 0
+      let trainingVolume = weightValue * repsValue
+      accumulatedTrainingVolume += trainingVolume
       let finishedExercise = CompletedExerciseSet(name: "\(currentExercise)", weight: weightText, reps: repsText, date: currentDayDate)
       completedSet.append(finishedExercise)
+      print(completedSet)
       setTableView.reloadData()
     }
+  }
+  
+  @IBAction func updateTrainingVolumePressed(_ sender: Any) {
+    updateTrainingVolume()
+  }
+  
+  func updateTrainingVolume() {
+    let totalTrainingVolumeSet: [String: Any] = ["totalVolume": accumulatedTrainingVolume, "date": currentDayDate]
+    let userTotalVolumeRef = rootReference.child("Workout").child(user.uid).child("TrainingVolume").child("\(currentExercise)").child(currentDayDateYear)
+    userTotalVolumeRef.setValue(totalTrainingVolumeSet)
   }
   
   func addPRsetButton(at indexPath: IndexPath) {
@@ -149,8 +195,13 @@ class ExerciseDetailVC: UIViewController {
 
     graphView.shouldAnimateOnStartup = true
 
-    graphView.rangeMax = 600
-//    graphView.shouldAdaptRange = true
+    switch selectedSegmentIndex {
+    case 2:
+      graphView.shouldAdaptRange = true
+      graphView.shouldRangeAlwaysStartAtZero = true
+    default:
+      graphView.rangeMax = 700
+    }
     graphView.rangeMin = 0
 
     // Add everything
@@ -168,10 +219,19 @@ extension ExerciseDetailVC: ScrollableGraphViewDataSource {
     // Return the data for each plot.
     switch(plot.identifier) {
     case "bar":
-      if let weightPlot = completedPRData[pointIndex].weight {
-        return (weightPlot as NSString).doubleValue
-      } else {
-        return 0.0
+      if selectedSegmentIndex == 1 {
+        if let weightPlot = completedPRData[pointIndex].weight {
+          return (weightPlot as NSString).doubleValue
+        } else {
+          return 0.0
+        }
+      }
+      else {
+        if let volumePlot = trainingVolumeData[pointIndex].totalVolume {
+          return Double(volumePlot)
+        } else {
+          return 0.0
+        }
       }
     default:
       return 0
@@ -179,15 +239,31 @@ extension ExerciseDetailVC: ScrollableGraphViewDataSource {
   }
   
   func label(atIndex pointIndex: Int) -> String {
-    if let datePlot = completedPRData[pointIndex].date {
-      return datePlot
-    } else {
-      return "No Data to Plot"
+    if selectedSegmentIndex == 1 {
+      if let datePlot = completedPRData[pointIndex].date {
+        return datePlot
+      }
+      else {
+       return "No Data to Plot"
+      }
+    }
+    else {
+      if let datePlot = trainingVolumeData[pointIndex].date {
+        return datePlot
+      }
+      else {
+       return "No Data to Plot"
+      }
     }
   }
   
   func numberOfPoints() -> Int {
-    return completedPRData.count
+    if selectedSegmentIndex == 1 {
+      return completedPRData.count
+    }
+    else {
+      return trainingVolumeData.count
+    }
   }
 }
 
@@ -210,7 +286,15 @@ extension ExerciseDetailVC: UITableViewDelegate, UITableViewDataSource {
     switch editingStyle {
     case .delete:
       if completedSet[indexPath.row].key != "" {
-        userWorkoutReference.child(user.uid).child("PR").child("\(currentExercise)").child(completedSet[indexPath.row].key).setValue(nil)
+        userWorkoutReference.child(user.uid).child("PR").child(currentExercise).child(completedSet[indexPath.row].key).setValue(nil)
+      }
+      //re-calculate accumulated Training Volume when deleting exercise set row
+      if let weightString = completedSet[indexPath.row].weight, let repsString = completedSet[indexPath.row].reps {
+        let weightValue = Int(weightString) ?? 0
+        let repsValue = Int(repsString) ?? 0
+        let trainingVolume = weightValue * repsValue
+        accumulatedTrainingVolume -= trainingVolume
+        userWorkoutReference.child(user.uid).child("TrainingVolume").child(currentExercise).child(currentDayDateYear).setValue(["date": currentDayDate, "totalVolume": accumulatedTrainingVolume])
       }
       completedSet.remove(at: indexPath.row)
       tableView.reloadData()

@@ -30,6 +30,7 @@
 		40937AEC24DE4B4D00870F66 /* ExerciseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AEB24DE4B4D00870F66 /* ExerciseListVC.swift */; };
 		40937AF324DF4B7500870F66 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AF224DF4B7500870F66 /* LoginVC.swift */; };
 		40937AF524DF5E4E00870F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40937AF424DF5E4E00870F66 /* User.swift */; };
+		EA653DBD2544D3AE0057CCEB /* TrainingVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA653DBC2544D3AE0057CCEB /* TrainingVolume.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		40937AF424DF5E4E00870F66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		40937AF624DF60AE00870F66 /* Lift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lift.entitlements; sourceTree = "<group>"; };
 		4F4DE6D8543D0834D0095B81 /* Pods-Lift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lift.release.xcconfig"; path = "Target Support Files/Pods-Lift/Pods-Lift.release.xcconfig"; sourceTree = "<group>"; };
+		EA653DBC2544D3AE0057CCEB /* TrainingVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingVolume.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				40937AF424DF5E4E00870F66 /* User.swift */,
 				407355AE24E76931002393AC /* CompletedExerciseSet.swift */,
 				407355B024E98B18002393AC /* ColorExtension.swift */,
+				EA653DBC2544D3AE0057CCEB /* TrainingVolume.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				40937AEC24DE4B4D00870F66 /* ExerciseListVC.swift in Sources */,
 				40937AF324DF4B7500870F66 /* LoginVC.swift in Sources */,
 				40937AC924DCF65A00870F66 /* AppDelegate.swift in Sources */,
+				EA653DBD2544D3AE0057CCEB /* TrainingVolume.swift in Sources */,
 				40937AE524DDF6C800870F66 /* WorkoutVC.swift in Sources */,
 				40937AF524DF5E4E00870F66 /* User.swift in Sources */,
 				407355B124E98B18002393AC /* ColorExtension.swift in Sources */,
