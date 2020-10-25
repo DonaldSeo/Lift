@@ -76,18 +76,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bIw-bi-ztJ">
-                                <rect key="frame" x="0.0" y="191" width="375" height="185"/>
+                                <rect key="frame" x="0.0" y="191" width="375" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="gdq-Qg-yLh"/>
+                                    <constraint firstAttribute="height" constant="150" id="gdq-Qg-yLh"/>
                                 </constraints>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-Dc-dgX">
-                                <rect key="frame" x="165.66666666666666" y="400" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-ng-V1Q">
                                 <rect key="frame" x="329" y="21.666666666666664" width="30" height="27.000000000000007"/>
                                 <constraints>
@@ -137,7 +131,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w7-UK-Ka6">
-                                <rect key="frame" x="0.0" y="428.33333333333326" width="375" height="242"/>
+                                <rect key="frame" x="0.0" y="429.33333333333326" width="375" height="241"/>
                                 <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-pe-GRs">
@@ -147,18 +141,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-eO-rHB">
+                                <rect key="frame" x="69" y="389" width="237" height="32"/>
+                                <segments>
+                                    <segment title="PR"/>
+                                    <segment title="Training Volume"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="t09-w7-p21" eventType="valueChanged" id="Fb3-wa-Hgy"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qd3-78-NDx">
+                                <rect key="frame" x="105.66666666666669" y="351" width="164" height="30"/>
+                                <state key="normal" title="Update Training Volume"/>
+                                <connections>
+                                    <action selector="updateTrainingVolumePressed:" destination="t09-w7-p21" eventType="touchUpInside" id="EEF-xZ-tSh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X9r-Fc-xYe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BH9-M7-bUH" firstAttribute="top" secondItem="X9r-Fc-xYe" secondAttribute="top" constant="50" id="0iR-kw-2Gu"/>
-                            <constraint firstItem="Wen-Dc-dgX" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="10s-c7-caJ"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="3Ri-zv-MiA" secondAttribute="bottom" constant="12.333333333333329" id="1TU-rI-Tkx"/>
+                            <constraint firstItem="DlR-eO-rHB" firstAttribute="top" secondItem="qd3-78-NDx" secondAttribute="bottom" constant="8" symbolic="YES" id="5ge-S6-g1l"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="9gK-GW-VMD"/>
                             <constraint firstItem="X9r-Fc-xYe" firstAttribute="bottom" secondItem="8w7-UK-Ka6" secondAttribute="bottom" constant="53.666666666666742" id="Bnq-hD-C6J"/>
+                            <constraint firstItem="qd3-78-NDx" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="Cms-PB-zRb"/>
                             <constraint firstItem="G6A-Ij-BVd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="F91-ko-Sr5"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="3b0-z9-2ot" secondAttribute="bottom" constant="8.3333333333333286" id="FDo-aU-1AG"/>
-                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="top" secondItem="Wen-Dc-dgX" secondAttribute="bottom" constant="7.3333333333333144" id="K0n-Ge-eHS"/>
                             <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="bIw-bi-ztJ" secondAttribute="trailing" id="QjW-4C-wAB"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" id="Qs1-Od-9J5"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="JaS-Bv-fgh" secondAttribute="top" constant="191" id="SPS-02-nxO"/>
@@ -170,12 +181,14 @@
                             <constraint firstItem="X9r-Fc-xYe" firstAttribute="trailing" secondItem="3b0-z9-2ot" secondAttribute="trailing" constant="20" id="ag2-rj-PCj"/>
                             <constraint firstItem="3Ri-zv-MiA" firstAttribute="leading" secondItem="2m4-7h-0Il" secondAttribute="trailing" constant="17" id="cB7-sb-up1"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="G6A-Ij-BVd" secondAttribute="bottom" constant="12.333333333333329" id="ecA-Ar-TGX"/>
-                            <constraint firstItem="Wen-Dc-dgX" firstAttribute="top" secondItem="bIw-bi-ztJ" secondAttribute="bottom" constant="24" id="gO4-Ni-ItO"/>
                             <constraint firstItem="bIw-bi-ztJ" firstAttribute="top" secondItem="2m4-7h-0Il" secondAttribute="bottom" constant="71.333333333333329" id="iNE-MB-uGY"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="leading" secondItem="X9r-Fc-xYe" secondAttribute="leading" constant="20" id="jRd-oX-aWC"/>
+                            <constraint firstItem="DlR-eO-rHB" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="kps-o4-eEC"/>
                             <constraint firstItem="wyM-9t-HDF" firstAttribute="leading" secondItem="3Ri-zv-MiA" secondAttribute="trailing" constant="14" id="lCR-VN-06Y"/>
                             <constraint firstItem="mjO-ng-V1Q" firstAttribute="trailing" secondItem="JaS-Bv-fgh" secondAttribute="trailingMargin" id="n0H-Ev-XS0"/>
+                            <constraint firstItem="qd3-78-NDx" firstAttribute="top" secondItem="bIw-bi-ztJ" secondAttribute="bottom" constant="10" id="nA8-lq-AmV"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="top" secondItem="2m4-7h-0Il" secondAttribute="bottom" constant="5.3333333333333286" id="o6a-nI-c05"/>
+                            <constraint firstItem="8w7-UK-Ka6" firstAttribute="top" secondItem="DlR-eO-rHB" secondAttribute="bottom" constant="9.3333333333332575" id="pKa-fp-jf0"/>
                             <constraint firstItem="BH9-M7-bUH" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="teK-LB-6tf"/>
                             <constraint firstItem="LaV-pe-GRs" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="v2B-Rt-IQI"/>
                             <constraint firstItem="8w7-UK-Ka6" firstAttribute="centerX" secondItem="JaS-Bv-fgh" secondAttribute="centerX" id="veh-lR-4sA"/>
@@ -190,6 +203,7 @@
                         <outlet property="exerciseNoteTextView" destination="LaV-pe-GRs" id="jbc-fg-bVd"/>
                         <outlet property="exerciseTitle" destination="BH9-M7-bUH" id="tYP-4R-Aoe"/>
                         <outlet property="graphRenderView" destination="8w7-UK-Ka6" id="sqB-ac-ukr"/>
+                        <outlet property="graphSegmentedControl" destination="DlR-eO-rHB" id="4b4-sa-4pL"/>
                         <outlet property="repsTextField" destination="2m4-7h-0Il" id="zfa-fa-B7g"/>
                         <outlet property="setTableView" destination="bIw-bi-ztJ" id="FJN-Rr-IMZ"/>
                         <outlet property="weightTextField" destination="wyM-9t-HDF" id="3qn-pU-D5J"/>
