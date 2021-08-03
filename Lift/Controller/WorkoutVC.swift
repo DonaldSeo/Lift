@@ -74,8 +74,6 @@ class WorkoutVC: UIViewController {
   {
     workoutTableView.reloadData()
   }
-
-  
   
   @IBAction func customExerciseButtonPressed(_ sender: Any) {
     
@@ -88,6 +86,7 @@ class WorkoutVC: UIViewController {
     pickerFrame.dataSource = self
     pickerFrame.delegate = self
     pickerFrame.selectRow(1, inComponent: 0, animated: true)
+    selectedSection = 1
     
     let saveAction = UIAlertAction(title: "Save", style: .default) { action in
       let titleField = alert.textFields![0]
@@ -96,12 +95,16 @@ class WorkoutVC: UIViewController {
       let newExerciseRef = self.userWorkoutReference.child(self.currentUser.uid).child("List").childByAutoId()
       newExerciseRef.setValue(exercise)
     }
+
+        
     let cancelAction = UIAlertAction(title: "Cancel",
                                      style: .default)
     
-    alert.addTextField { textTitle in
-      textTitle.placeholder = "Exercise Title"
+    alert.addTextField { textField in
+      textField.placeholder = "Exercise Title"
     }
+    
+    
     alert.addAction(saveAction)
     alert.addAction(cancelAction)
     

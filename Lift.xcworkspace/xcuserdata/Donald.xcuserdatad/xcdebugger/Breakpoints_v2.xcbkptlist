@@ -30,10 +30,17 @@
             filePath = "Lift/Controller/ExerciseDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "229"
             endingLineNumber = "229"
             landmarkName = "tableView(_:leadingSwipeActionsConfigurationForRowAt:)"
             landmarkType = "7">
+=======
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "ExerciseDetailVC"
+            landmarkType = "21">
+>>>>>>> master
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +53,13 @@
             filePath = "Lift/Controller/ExerciseDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "182"
             endingLineNumber = "182"
+=======
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+>>>>>>> master
             landmarkName = "label(atIndex:)"
             landmarkType = "7">
          </BreakpointContent>
